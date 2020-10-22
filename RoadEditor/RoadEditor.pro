@@ -16,9 +16,11 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    FileOpsMenu.cpp \
     RoadEditor.cpp
 
 HEADERS += \
+    FileOpsMenu.h \
     RoadEditor_global.h \
     RoadEditor.h
 
@@ -39,5 +41,12 @@ win32:CONFIG(release, debug|release) {
 FORMS +=
 include(ViewWindow.pri)
 include(PropertyWindow.pri)
-include(ModelWindow.pri)
 include(SceneWindow.pri)
+include(../Common/Common.pri)
+
+#win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../Depend/lib/ -lassimp-vc142-mt
+#else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../Depend/lib/ -lassimp-vc142-mtd
+#else:unix: LIBS += -L$$PWD/../Depend/lib/ -lassimp-vc142-mt
+
+#INCLUDEPATH += $$PWD/../Depend/include
+#DEPENDPATH += $$PWD/../Depend/include

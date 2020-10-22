@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'SceneWindow.ui'
 **
-** Created by: Qt User Interface Compiler version 5.14.2
+** Created by: Qt User Interface Compiler version 5.12.6
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -12,32 +12,39 @@
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QHeaderView>
-#include <QtWidgets/QTreeView>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
+#include <SourceTreeView.h>
 
 QT_BEGIN_NAMESPACE
 
 class Ui_SceneWindow
 {
 public:
-    QVBoxLayout *verticalLayout;
-    QTreeView *treeView;
+    QVBoxLayout *vboxLayout;
+    SourceTreeView *treeView;
 
     void setupUi(QWidget *SceneWindow)
     {
         if (SceneWindow->objectName().isEmpty())
             SceneWindow->setObjectName(QString::fromUtf8("SceneWindow"));
-        SceneWindow->resize(400, 300);
+        SceneWindow->resize(331, 645);
+        QSizePolicy sizePolicy(QSizePolicy::Fixed, QSizePolicy::Expanding);
+        sizePolicy.setHorizontalStretch(0);
+        sizePolicy.setVerticalStretch(0);
+        sizePolicy.setHeightForWidth(SceneWindow->sizePolicy().hasHeightForWidth());
+        SceneWindow->setSizePolicy(sizePolicy);
         SceneWindow->setStyleSheet(QString::fromUtf8("background-color: rgb(0, 0, 255);"));
-        verticalLayout = new QVBoxLayout(SceneWindow);
-        verticalLayout->setSpacing(0);
-        verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
-        verticalLayout->setContentsMargins(0, 0, 0, 0);
-        treeView = new QTreeView(SceneWindow);
+        vboxLayout = new QVBoxLayout(SceneWindow);
+        vboxLayout->setSpacing(0);
+        vboxLayout->setObjectName(QString::fromUtf8("vboxLayout"));
+        vboxLayout->setContentsMargins(0, 0, 0, 0);
+        treeView = new SourceTreeView(SceneWindow);
         treeView->setObjectName(QString::fromUtf8("treeView"));
+        sizePolicy.setHeightForWidth(treeView->sizePolicy().hasHeightForWidth());
+        treeView->setSizePolicy(sizePolicy);
 
-        verticalLayout->addWidget(treeView);
+        vboxLayout->addWidget(treeView);
 
 
         retranslateUi(SceneWindow);
@@ -47,7 +54,7 @@ public:
 
     void retranslateUi(QWidget *SceneWindow)
     {
-        SceneWindow->setWindowTitle(QCoreApplication::translate("SceneWindow", "Form", nullptr));
+        SceneWindow->setWindowTitle(QApplication::translate("SceneWindow", "Form", nullptr));
     } // retranslateUi
 
 };

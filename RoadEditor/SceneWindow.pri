@@ -1,8 +1,10 @@
 HEADERS += \
-    $$PWD/SceneWindow.h
+    $$PWD/SceneWindow.h \
+    $$PWD/SourceTreeView.h
 
 FORMS += \
     $$PWD/SceneWindow.ui
 
 SOURCES += \
-    $$PWD/SceneWindow.cpp
+    $$PWD/SceneWindow.cpp \
+    $$PWD/SourceTreeView.cpp

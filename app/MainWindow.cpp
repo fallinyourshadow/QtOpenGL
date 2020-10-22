@@ -1,5 +1,6 @@
 #include "MainWindow.h"
 #include "ui_MainWindow.h"
+#include "../Common/Common.h"
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -31,11 +32,15 @@ void MainWindow::AddWidget_LayoutCentre(QWidget *anyWidget)
     anyWidget->show();
 }
 
-void MainWindow::AddWidget_LayoutTop(QWidget *anyWidget)
+void MainWindow::setMenueBar(QList<QMenu *> actionList)
 {
-    ui->Layout_top->addWidget(anyWidget);
-    anyWidget->show();
+    QMenu * v = nullptr;
+    foreach (v, actionList) {
+        ui->menubar->addMenu(v);
+    }
 }
+
+
 
 
 

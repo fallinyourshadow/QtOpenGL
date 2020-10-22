@@ -16,7 +16,8 @@ public:
     void AddWidget_LayoutLeft(QWidget * anyWidget);
     void AddWidget_LayoutRight(QWidget * anyWidget);
     void AddWidget_LayoutCentre(QWidget * anyWidget);
-    void AddWidget_LayoutTop(QWidget * anyWidget);
+    void setMenueBar(QList<QMenu *> actionList);
+    //void AddWidget_LayoutTop(QWidget * anyWidget);
 private:
     Ui::MainWindow *ui;
 };

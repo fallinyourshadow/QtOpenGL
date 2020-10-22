@@ -10,10 +10,10 @@ class ViewWindow;
 class ViewWindow : public QWidget
 {
     Q_OBJECT
-
 public:
     explicit ViewWindow(QWidget *parent = nullptr);
     ~ViewWindow();
+
 
 private:
     Ui::ViewWindow *ui;

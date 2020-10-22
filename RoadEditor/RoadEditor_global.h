@@ -4,6 +4,7 @@
 #include <QtCore/qglobal.h>
 #include <QObject>
 #include <QWidget>
+#include <QMenu>
 #if defined(ROADEDITOR_LIBRARY)
 #  define ROADEDITOR_EXPORT Q_DECL_EXPORT
 #else
@@ -17,9 +18,10 @@ public:
     virtual QObject * openRoadEditor(QWidget *parent) = 0;
     virtual void sayHellow() =0;
     virtual QWidget * viewWindow() = 0;
-    virtual QWidget * modelWindow() = 0;
+    //virtual QWidget * modelWindow() = 0;
     virtual QWidget * sceneWindow() = 0;
     virtual QWidget * propertyWindow() =0;
+    virtual QList<QMenu *> menus() = 0;
 };
 #define PLUGIN_INTERFACE_IID "io.qt.RoadEditor"//plugin's iid
 Q_DECLARE_INTERFACE(RoadEditorInterface,PLUGIN_INTERFACE_IID)//register plugin iid to qt meta object

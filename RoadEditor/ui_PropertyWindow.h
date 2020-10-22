@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'PropertyWindow.ui'
 **
-** Created by: Qt User Interface Compiler version 5.14.2
+** Created by: Qt User Interface Compiler version 5.12.6
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -27,8 +27,8 @@ public:
     {
         if (PropertyWindow->objectName().isEmpty())
             PropertyWindow->setObjectName(QString::fromUtf8("PropertyWindow"));
-        PropertyWindow->resize(400, 300);
-        QSizePolicy sizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+        PropertyWindow->resize(606, 751);
+        QSizePolicy sizePolicy(QSizePolicy::Fixed, QSizePolicy::Expanding);
         sizePolicy.setHorizontalStretch(0);
         sizePolicy.setVerticalStretch(0);
         sizePolicy.setHeightForWidth(PropertyWindow->sizePolicy().hasHeightForWidth());
@@ -51,8 +51,8 @@ public:
 
     void retranslateUi(QWidget *PropertyWindow)
     {
-        PropertyWindow->setWindowTitle(QCoreApplication::translate("PropertyWindow", "Form", nullptr));
-        groupBox->setTitle(QCoreApplication::translate("PropertyWindow", "GroupBox", nullptr));
+        PropertyWindow->setWindowTitle(QApplication::translate("PropertyWindow", "Form", nullptr));
+        groupBox->setTitle(QApplication::translate("PropertyWindow", "property", nullptr));
     } // retranslateUi
 
 };

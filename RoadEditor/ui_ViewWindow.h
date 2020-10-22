@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'ViewWindow.ui'
 **
-** Created by: Qt User Interface Compiler version 5.14.2
+** Created by: Qt User Interface Compiler version 5.12.6
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -9,9 +9,9 @@
 #ifndef UI_VIEWWINDOW_H
 #define UI_VIEWWINDOW_H
 
+#include <OpenGlWidget.h>
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
-#include <QtWidgets/QOpenGLWidget>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
@@ -21,7 +21,7 @@ class Ui_ViewWindow
 {
 public:
     QVBoxLayout *verticalLayout;
-    QOpenGLWidget *openGLWidget;
+    OpenGlWidget *openGLWidget;
 
     void setupUi(QWidget *ViewWindow)
     {
@@ -38,7 +38,7 @@ public:
         verticalLayout->setSpacing(0);
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
         verticalLayout->setContentsMargins(0, 0, 0, 0);
-        openGLWidget = new QOpenGLWidget(ViewWindow);
+        openGLWidget = new OpenGlWidget(ViewWindow);
         openGLWidget->setObjectName(QString::fromUtf8("openGLWidget"));
 
         verticalLayout->addWidget(openGLWidget);
@@ -51,7 +51,7 @@ public:
 
     void retranslateUi(QWidget *ViewWindow)
     {
-        ViewWindow->setWindowTitle(QCoreApplication::translate("ViewWindow", "Form", nullptr));
+        ViewWindow->setWindowTitle(QApplication::translate("ViewWindow", "Form", nullptr));
     } // retranslateUi
 
 };

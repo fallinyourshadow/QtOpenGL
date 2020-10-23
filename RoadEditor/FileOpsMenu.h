@@ -5,8 +5,8 @@
 #include <QAction>
 #include <QMenu>
 #include <QThread>
-#include <glm/glm.hpp>
-#include <glad/glad.h>
+//#include <glm/glm.hpp>
+//#include <glad/glad.h>
 #include <iostream>
 #include <string>
 #include <fstream>

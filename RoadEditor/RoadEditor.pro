@@ -17,12 +17,26 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     FileOpsMenu.cpp \
-    RoadEditor.cpp
+    MetaObject.cpp \
+    Model.cpp \
+    ModelPackage.cpp \
+    Object.cpp \
+    RoadEditor.cpp \
+    Scene.cpp \
+    SourcePackageManager.cpp \
+    Topscene.cpp
 
 HEADERS += \
     FileOpsMenu.h \
+    MetaObject.h \
+    Model.h \
+    ModelPackage.h \
+    Object.h \
     RoadEditor_global.h \
-    RoadEditor.h
+    RoadEditor.h \
+    Scene.h \
+    SourcePackageManager.h \
+    Topscene.h
 
 # Default rules for deployment.
 unix {

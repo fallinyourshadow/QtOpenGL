@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'ViewWindow.ui'
 **
-** Created by: Qt User Interface Compiler version 5.12.6
+** Created by: Qt User Interface Compiler version 5.14.2
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -51,7 +51,7 @@ public:
 
     void retranslateUi(QWidget *ViewWindow)
     {
-        ViewWindow->setWindowTitle(QApplication::translate("ViewWindow", "Form", nullptr));
+        ViewWindow->setWindowTitle(QCoreApplication::translate("ViewWindow", "Form", nullptr));
     } // retranslateUi
 
 };

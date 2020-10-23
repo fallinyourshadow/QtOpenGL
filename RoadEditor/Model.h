@@ -8,11 +8,12 @@ class Model : public QObject
 {
     Q_OBJECT
 public:
-    explicit Model(QObject *parent = nullptr);
+    explicit Model( QObject *parent = nullptr);
     typedef struct Status{
         bool isCited;
     }Status;
     Status status();//获得状态
+    bool loading(const QString &path);
 signals:
 
 public slots:

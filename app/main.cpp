@@ -14,8 +14,8 @@ int main(int argc, char *argv[])
     MainWindow w;
     w.show();
     QObject * pRoadEditor =
-    loadPlugin(QString::fromLocal8Bit("C:\\Users\\Administrator\\Desktop\\QtOpenGL\\build\\debug\\RoadEditor.dll"));
-    //loadPlugin(QString::fromLocal8Bit("C:\\Users\\ASUS\\Desktop\\QtOpenGl\\QtOpenGl\\build\\debug\\RoadEditor.dll"));
+    //loadPlugin(QString::fromLocal8Bit("C:\\Users\\Administrator\\Desktop\\QtOpenGL\\build\\debug\\RoadEditor.dll"));
+    loadPlugin(QString::fromLocal8Bit("C:\\Users\\ASUS\\Desktop\\QtOpenGl\\build\\debug\\RoadEditor.dll"));
     if(pRoadEditor)
     {
         RoadEditorInterface *pIf = qobject_cast<RoadEditorInterface *>(pRoadEditor);
@@ -38,7 +38,7 @@ QObject* loadPlugin(QString pluginPath)
     if(!pluginFile.exists())
     {
         qDebug() << __FUNCDNAME__ << pluginPath;
-        QMessageBox::warning(nullptr,"警告","找不到指定的插件");
+        QMessageBox::warning(nullptr,QString::fromLocal8Bit( "警告"),QString::fromLocal8Bit("找不到指定的插件"));
     }
     else
     {

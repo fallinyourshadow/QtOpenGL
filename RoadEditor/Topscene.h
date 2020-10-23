@@ -2,8 +2,8 @@
 #define TOPSCENE_H
 
 #include <QObject>
-
-class Topscene : public QObject
+#include "Scene.h"
+class Topscene : public Scene
 {
     Q_OBJECT
 public:

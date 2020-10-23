@@ -4,15 +4,17 @@
 #include <QFileDialog>
 #include <QDebug>
 #include "../Common/Common.h"
-
+#include "SourcePackageManager.h"
 FileOpsMenu::FileOpsMenu(QMenu *parent) : QMenu(parent)
 {
     m_processThread = new QThread(nullptr);
     m_processFunc.moveToThread(m_processThread);
     m_processThread->start();
-    setTitle("文件");
-    m_pModelLoading.setText("加载模型");
-    m_pSaveCurrent.setText("保存当前");
+    setTitle(LOC("文件"));
+
+    m_pModelLoading.setText(LOC("加载"));
+    //
+    // m_pSaveCurrent.setText("保存当前");
     addAction(&m_pModelLoading);
     addAction(&m_pSaveCurrent);
     connect(&m_pModelLoading,
@@ -43,22 +45,24 @@ FileOpsMenu::~FileOpsMenu()
 void FileOpsMenu::on_modelLoadingTriggered(bool click)
 {
     Q_UNUSED(click)
-    //定义文件对话框类
+    //定?文件??框?
     QFileDialog *fileDialog = new QFileDialog(this);
-    //定义文件对话框标题
-    fileDialog->setWindowTitle(QStringLiteral("选择模型文件"));
-    //设置默认文件路径
+    //定?文件??框??
+    fileDialog->setWindowTitle(LOC("加载模型文件"));
+    //?置默?文件路径
     fileDialog->setDirectory(".");
-    //设置文件过滤器
-    fileDialog->setNameFilter(tr("File(*.*)"));
-    //设置可以选择多个文件,默认为只能选择一个文件QFileDialog::ExistingFiles
+    //?置文件??器
+    fileDialog->setNameFilter(LOC("File(*.*)"));
+    //?置可以??多个文件,默??只能??一个文件QFileDialog::ExistingFiles
     fileDialog->setFileMode(QFileDialog::ExistingFiles);
-    //设置视图模式
+    //?置??模式
     fileDialog->setViewMode(QFileDialog::Detail);
-    //打印所有选择的文件的路径
+    //打印所有??的文件的路径
     QStringList fileNames;
+
     if (fileDialog->exec()) {
         fileNames = fileDialog->selectedFiles();
+
     }
     QString v;
     Q_EMIT modelLoading(fileNames);
@@ -73,5 +77,22 @@ void FileProcess::on_modelLoading(QStringList paths)
 {
     if(QThread::currentThread()->isInterruptionRequested())
         return;
-    DEBUG(QThread::currentThreadId() << paths);
+    SourcePackageManager manager;
+    ModelPackage * package = new ModelPackage;//创建一个模型资源包
+    manager.appendModelPackage("default",package);//命名为"default"
+    QString v;
+    int i = 0;
+    foreach(v,paths)
+    {
+        Model *model = new Model;
+        if(!model->loading(v))//如果加载失败
+        {
+            delete model;
+        }
+        else
+        {
+            package->appendModel(QString(i++), model);
+        }
+    }
+   // DEBUG(QThread::currentThreadId() << paths);
 }

@@ -1,6 +1,6 @@
 #include "Topscene.h"
 
-Topscene::Topscene(QObject *parent) : QObject(parent)
+Topscene::Topscene(QObject *parent) : Scene(parent)
 {
 
 }

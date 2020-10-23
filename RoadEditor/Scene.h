@@ -2,8 +2,9 @@
 #define SCENE_H
 
 #include <QObject>
+#include "MetaObject.h"
 
-class Scene : public QObject
+class Scene : public MetaObject
 {
     Q_OBJECT
 public:

@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'SceneWindow.ui'
 **
-** Created by: Qt User Interface Compiler version 5.12.6
+** Created by: Qt User Interface Compiler version 5.14.2
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -54,7 +54,7 @@ public:
 
     void retranslateUi(QWidget *SceneWindow)
     {
-        SceneWindow->setWindowTitle(QApplication::translate("SceneWindow", "Form", nullptr));
+        SceneWindow->setWindowTitle(QCoreApplication::translate("SceneWindow", "Form", nullptr));
     } // retranslateUi
 
 };

@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'PropertyWindow.ui'
 **
-** Created by: Qt User Interface Compiler version 5.12.6
+** Created by: Qt User Interface Compiler version 5.14.2
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -51,8 +51,8 @@ public:
 
     void retranslateUi(QWidget *PropertyWindow)
     {
-        PropertyWindow->setWindowTitle(QApplication::translate("PropertyWindow", "Form", nullptr));
-        groupBox->setTitle(QApplication::translate("PropertyWindow", "property", nullptr));
+        PropertyWindow->setWindowTitle(QCoreApplication::translate("PropertyWindow", "Form", nullptr));
+        groupBox->setTitle(QCoreApplication::translate("PropertyWindow", "property", nullptr));
     } // retranslateUi
 
 };

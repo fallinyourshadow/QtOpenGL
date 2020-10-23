@@ -46,6 +46,7 @@ unix {
 
 DISTFILES += \
     RoadEditor.json
+
 win32:CONFIG(release, debug|release) {
     DESTDIR = $$PWD/../build/release
 } else:win32:CONFIG(debug, debug|release) {

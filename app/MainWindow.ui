@@ -34,7 +34,7 @@
      <number>0</number>
     </property>
     <item>
-     <layout class="QHBoxLayout" name="horizontalLayout_3" stretch="1,2,1">
+     <layout class="QHBoxLayout" name="horizontalLayout_3" stretch="1,1,2">
       <property name="spacing">
        <number>0</number>
       </property>
@@ -52,7 +52,7 @@
        </layout>
       </item>
       <item>
-       <layout class="QVBoxLayout" name="Layout_centre">
+       <layout class="QVBoxLayout" name="Layout_right">
         <property name="spacing">
          <number>0</number>
         </property>
@@ -62,7 +62,7 @@
        </layout>
       </item>
       <item>
-       <layout class="QVBoxLayout" name="Layout_right">
+       <layout class="QVBoxLayout" name="Layout_centre">
         <property name="spacing">
          <number>0</number>
         </property>

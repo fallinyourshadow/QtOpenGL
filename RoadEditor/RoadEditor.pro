@@ -15,28 +15,9 @@ DEFINES += QT_DEPRECATED_WARNINGS
 # You can also select to disable deprecated APIs only up to a certain version of Qt.
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
-SOURCES += \
-    FileOpsMenu.cpp \
-    MetaObject.cpp \
-    Model.cpp \
-    ModelPackage.cpp \
-    Object.cpp \
-    RoadEditor.cpp \
-    Scene.cpp \
-    SourcePackageManager.cpp \
-    Topscene.cpp
+SOURCES +=
 
-HEADERS += \
-    FileOpsMenu.h \
-    MetaObject.h \
-    Model.h \
-    ModelPackage.h \
-    Object.h \
-    RoadEditor_global.h \
-    RoadEditor.h \
-    Scene.h \
-    SourcePackageManager.h \
-    Topscene.h
+HEADERS +=
 
 # Default rules for deployment.
 unix {
@@ -58,7 +39,12 @@ include(ViewWindow.pri)
 include(PropertyWindow.pri)
 include(SceneWindow.pri)
 include(../Common/Common.pri)
-
+include(SceneWindowObjects.pri)
+include(FileOpsMenu.pri)
+include(Interface.pri)
+include(Model.pri)
+include(SourcePackageManager.pri)
+include(SceneWindowMenu.pri)
 #win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../Depend/lib/ -lassimp-vc142-mt
 #else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../Depend/lib/ -lassimp-vc142-mtd
 #else:unix: LIBS += -L$$PWD/../Depend/lib/ -lassimp-vc142-mt

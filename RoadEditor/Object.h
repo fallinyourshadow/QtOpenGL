@@ -9,7 +9,7 @@ class Object : public MetaObject
     Q_OBJECT
 public:
     explicit Object(QObject *parent = nullptr);
-
+    virtual void initProperty() Q_DECL_OVERRIDE;
 signals:
 
 public slots:

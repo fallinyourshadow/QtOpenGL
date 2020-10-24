@@ -10,9 +10,9 @@ FileOpsMenu::FileOpsMenu(QMenu *parent) : QMenu(parent)
     m_processThread = new QThread(nullptr);
     m_processFunc.moveToThread(m_processThread);
     m_processThread->start();
-    setTitle(LOC("文件"));
+    setTitle(LOC("file"));
 
-    m_pModelLoading.setText(LOC("加载"));
+    m_pModelLoading.setText(LOC("load model"));
     //
     // m_pSaveCurrent.setText("保存当前");
     addAction(&m_pModelLoading);
@@ -48,7 +48,7 @@ void FileOpsMenu::on_modelLoadingTriggered(bool click)
     //定?文件??框?
     QFileDialog *fileDialog = new QFileDialog(this);
     //定?文件??框??
-    fileDialog->setWindowTitle(LOC("加载模型文件"));
+    fileDialog->setWindowTitle(LOC("load model"));
     //?置默?文件路径
     fileDialog->setDirectory(".");
     //?置文件??器

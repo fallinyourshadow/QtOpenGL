@@ -5,21 +5,24 @@
 #include <QHash>
 #include "Model.h"
 #include <QReadWriteLock>
-#include <QSharedPointer>
+
 
 class ModelPackage:public QObject
 {
     Q_OBJECT
 public:
-   explicit ModelPackage(QObject * parent = nullptr);
+   explicit ModelPackage(const QString &name, QObject * parent = nullptr);
    ~ModelPackage();
    bool appendModel(const QString &mid, Model *model);//增加模型对象
-   const QSharedPointer<Model*> selectModel(const QString &mid);//查询model
-   QSharedPointer<Model *> takeModel(const QString &mid);//删除模型对象
+   Model *selectModel(const QString &mid);//查询model
+   Model * takeModel(const QString &mid);//删除模型对象
+   int modelSize();
+   QString name();
+   const QHash<QString, Model *> modelPackage();
 private:
     QReadWriteLock m_lock;
     QString m_packageName;
-    QHash<QString, QSharedPointer<Model *>> m_modelHash;
+    QHash<QString, Model *> m_modelHash;
 };
 
 #endif // MODELPACKAGE_H

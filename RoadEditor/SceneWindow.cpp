@@ -12,3 +12,8 @@ SceneWindow::~SceneWindow()
 {
     delete ui;
 }
+
+SourceTreeView *SceneWindow::treeView()
+{
+    return ui->treeView;
+}

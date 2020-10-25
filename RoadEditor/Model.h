@@ -8,12 +8,13 @@ class Model : public QObject
 {
     Q_OBJECT
 public:
-    explicit Model( QObject *parent = nullptr);
+    explicit Model(QString name,QObject *parent = nullptr);
     typedef struct Status{
         bool isCited;
     }Status;
     Status status();//获得状态
     bool loading(const QString &path);
+    QString name();
 signals:
 
 public slots:
@@ -21,7 +22,7 @@ public slots:
 private:
     QReadWriteLock m_lock;
     Status m_status;
-    QString m_mid;
+    QString m_name;
     void statusInit();
 };
 

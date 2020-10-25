@@ -3,10 +3,9 @@
 
 #include <QObject>
 #include <QSharedPointer>
-#include <QWeakPointer>
 #include "Model.h"
 #include <QStandardItem>
-
+#include "ModelPackage.h"
 
 
 class MetaObject : public QObject , public QStandardItem
@@ -21,13 +20,16 @@ public:
         OBJECT
     }ObjectType;
     explicit MetaObject(QObject *parent = nullptr);
-    QWeakPointer<Model *> model();//返回当前引用的model
-    void citeModel(QSharedPointer<Model *> &model);//引用一个model
+    ~MetaObject();
+    Model * model();//返回当前引用的model
+    void citeModel(Model * model);//引用一个model
     void removeModel();//
     //QStandardItem * item();
     virtual void initProperty();
     void hellow();
     ObjectType objectType();
+    ModelPackage *modelPackage();
+    bool citeModelPackage(class ModelPackage *package);
 signals:
 
 public slots:
@@ -36,8 +38,10 @@ protected:
     void setObjectType(ObjectType type);
 private:
     //QStandardItem * m_pItem;
-    QWeakPointer<Model *> m_pModel;//所引用的模型
+   // QReadWriteLock m_lock;
+    Model * m_pModel;//所引用的模型
     ObjectType m_objectType;
+    class ModelPackage * m_pModelPackage;
 
 };
 

@@ -1,36 +1,36 @@
 #include "SourcePackageManager.h"
+#include "../Common/Common.h"
 
-QMultiHash<QString, QSharedPointer<ModelPackage *>> SourcePackageManager::s_modelPackageHash;
+QMultiHash<QString, ModelPackage *> * SourcePackageManager::s_modelPackageHash;
 
 SourcePackageManager::SourcePackageManager(QObject *parent) : QObject(parent)
 {
-
+    s_modelPackageHash = new  QMultiHash<QString, ModelPackage *>;
 }
 
-void SourcePackageManager::appendModelPackage(const QString &packageName,  ModelPackage *package)
+void SourcePackageManager::appendModelPackage(const QString &packageName,  ModelPackage * packageAddr)
 {
     QWriteLocker locker(&m_lock);
-    QSharedPointer<ModelPackage *> share_package;
-    share_package.reset(&package);
-    s_modelPackageHash.insertMulti(packageName, share_package);//复制一个指针的引用
+    //DEBUG_TITLE << package->name();
+    s_modelPackageHash->insertMulti(packageName, packageAddr);//复制一个指针的引用
 }
 
-QList<QSharedPointer<ModelPackage *>> SourcePackageManager::selectModelPackage(const QString &packageName)
+QList<ModelPackage *> SourcePackageManager::selectModelPackage(const QString &packageName)
 {
     QReadLocker locker(&m_lock);
-    return s_modelPackageHash.values(packageName);//根据键值查找
+    return s_modelPackageHash->values(packageName);//根据键值查找
 }
 
 int SourcePackageManager::removeModelPackage(const QString &packageName)
 {
     QWriteLocker locker(&m_lock);
-    QList<QSharedPointer<ModelPackage *>> temp = selectModelPackage(packageName);
+    QList<ModelPackage *> temp = selectModelPackage(packageName);
     if(0 == temp.size())
         return 0;
-    QSharedPointer<ModelPackage *> v;
+    ModelPackage * v;
     foreach(v, temp)
     {
-        v.clear();
+        delete v;
     }
-    return s_modelPackageHash.remove(packageName);//根据键值移除
+    return s_modelPackageHash->remove(packageName);//根据键值移除
 }

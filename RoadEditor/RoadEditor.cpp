@@ -17,10 +17,16 @@ RoadEditor::~RoadEditor()
 QObject * RoadEditor::openRoadEditor(QWidget *parent)
 {
     setParent(parent);
-    m_pViewWindow = new ViewWindow(parent);
+
     m_pSceneWindow = new SceneWindow(parent);
     m_pPropertyWindow = new PropertyWindow(parent);
+    m_pViewWindow = new ViewWindow(parent);
+    m_pViewWindow->openGlWidget()->setTopScene(m_pSceneWindow->treeView()->topScene());//绑定顶层场景
     createMenus();
+    connect(m_pSceneWindow->treeView(),
+            &SourceTreeView::focusChanged,
+            m_pPropertyWindow,
+            &PropertyWindow::on_foucsChanged);//绑定选中对象改变的信号
     return this;
 }
 
@@ -34,10 +40,7 @@ QWidget *RoadEditor::viewWindow()
     return m_pViewWindow;
 }
 
-//QWidget *RoadEditor::modelWindow()
-//{
-//    return m_pModelWindow;
-//}
+
 
 QWidget *RoadEditor::sceneWindow()
 {
@@ -58,7 +61,6 @@ void RoadEditor::createMenus()
 {
     FileOpsMenu * pFileOpsMenu = new FileOpsMenu(nullptr);
     m_menus.append(pFileOpsMenu);
-
 }
 
 

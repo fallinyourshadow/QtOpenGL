@@ -8,6 +8,8 @@
 #include <QBasicTimer>
 #include <QOpenGLShaderProgram>
 #include <QOpenGLTexture>
+#include "Topscene.h"
+
 
 //绘制场景窗口
 class OpenGlWidget :public QOpenGLWidget, protected QOpenGLFunctions
@@ -15,6 +17,7 @@ class OpenGlWidget :public QOpenGLWidget, protected QOpenGLFunctions
     Q_OBJECT
 public:
     explicit OpenGlWidget(QWidget *parent = nullptr);
+    void setTopScene(Topscene * topScene);
     ~OpenGlWidget();
 protected:
     void mousePressEvent(QMouseEvent *e) override;//鼠标按下事件
@@ -24,9 +27,9 @@ protected:
     void resizeGL(int w, int h) override;//改变大小
     void paintGL() override;
 private:
-    QBasicTimer timer;
-    QMatrix4x4 projection;//透视
-
+    QBasicTimer m_timer;
+    QMatrix4x4 m_projection;//透视
+    Topscene * m_pTopScene;//顶层场景
 };
 
 #endif // OPENGLWIDGET_H

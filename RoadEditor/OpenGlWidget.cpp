@@ -8,6 +8,11 @@ OpenGlWidget::OpenGlWidget(QWidget *parent):
 
 }
 
+void OpenGlWidget::setTopScene(Topscene *topScene)
+{
+    m_pTopScene = topScene;
+}
+
 OpenGlWidget::~OpenGlWidget()
 {
     makeCurrent();
@@ -32,7 +37,7 @@ void OpenGlWidget::timerEvent(QTimerEvent *e)
 void OpenGlWidget::initializeGL()
 {
     initializeOpenGLFunctions();
-    timer.start(12, this);
+    m_timer.start(12, this);
     //QOpenGLWidget::initializeGL();
 }
 
@@ -45,10 +50,10 @@ void OpenGlWidget::resizeGL(int w, int h)
     const qreal zNear = 3.0, zFar = 7.0, fov = 45.0;
 
     // Reset projection
-    projection.setToIdentity();
+    m_projection.setToIdentity();
 
     // Set perspective projection
-    projection.perspective(fov, aspect, zNear, zFar);
+    m_projection.perspective(fov, aspect, zNear, zFar);
 }
 
 void OpenGlWidget::paintGL()

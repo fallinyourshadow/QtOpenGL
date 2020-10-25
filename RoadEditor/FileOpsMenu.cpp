@@ -78,20 +78,21 @@ void FileProcess::on_modelLoading(QStringList paths)
     if(QThread::currentThread()->isInterruptionRequested())
         return;
     SourcePackageManager manager;
-    ModelPackage * package = new ModelPackage;//创建一个模型资源包
+    ModelPackage * package = new ModelPackage("default");//创建一个模型资源包
     manager.appendModelPackage("default",package);//命名为"default"
     QString v;
     int i = 0;
     foreach(v,paths)
     {
-        Model *model = new Model;
+        Model *model = new Model(QString(i++));
         if(!model->loading(v))//如果加载失败
         {
+            --i;
             delete model;
         }
         else
         {
-            package->appendModel(QString(i++), model);
+            package->appendModel(QString(i), model);
         }
     }
    // DEBUG(QThread::currentThreadId() << paths);

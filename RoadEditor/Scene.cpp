@@ -3,4 +3,5 @@
 Scene::Scene(QObject *parent) : MetaObject(parent)
 {
     setObjectType(SCENE);
+    setText("Scene");
 }

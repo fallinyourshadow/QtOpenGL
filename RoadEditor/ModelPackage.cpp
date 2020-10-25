@@ -1,16 +1,16 @@
 #include "ModelPackage.h"
 
-ModelPackage::ModelPackage(QObject *parent):QObject(parent)
+ModelPackage::ModelPackage(const QString &name, QObject *parent):QObject(parent)
 {
-
+    m_packageName = name;
 }
 
 ModelPackage::~ModelPackage()
 {
-    QSharedPointer<Model *> v;
+   Model * v;
     foreach(v,m_modelHash)
     {
-        v.clear();
+        delete v;
     }
 }
 
@@ -19,13 +19,11 @@ bool ModelPackage::appendModel(const QString &mid, Model *model)
     QWriteLocker locker(&m_lock);
     if(m_modelHash.contains(mid))//如果已经包含返回false
         return false;
-    QSharedPointer<Model *> shared_model;
-    shared_model.reset(&model);
-    m_modelHash.insert(mid, shared_model);
+    m_modelHash.insert(mid,model);
     return true;
 }
 
-const QSharedPointer<Model *> ModelPackage::selectModel(const QString &mid)
+Model *ModelPackage::selectModel(const QString &mid)
 {
     QReadLocker locker(&m_lock);
     if(!m_modelHash.contains(mid))//如果没有找到返回空
@@ -33,10 +31,27 @@ const QSharedPointer<Model *> ModelPackage::selectModel(const QString &mid)
     return m_modelHash.value(mid);
 }
 
-QSharedPointer<Model *> ModelPackage::takeModel(const QString &mid)
+Model * ModelPackage::takeModel(const QString &mid)
 {
     QWriteLocker locker(&m_lock);
     if(!m_modelHash.contains(mid))//如果不包含返回false
         return nullptr;
     return m_modelHash.take(mid);//删除
+}
+
+int ModelPackage::modelSize()
+{
+    QReadLocker locker(&m_lock);
+    return m_modelHash.size();
+}
+
+QString ModelPackage::name()
+{
+    return m_packageName;
+}
+
+const QHash<QString, Model *> ModelPackage::modelPackage()
+{
+    QReadLocker locker(&m_lock);
+    return m_modelHash;
 }

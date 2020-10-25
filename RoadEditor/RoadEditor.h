@@ -3,8 +3,6 @@
 #include <QDebug>
 #include <QThread>
 #include "RoadEditor_global.h"
-
-
 #include "PropertyWindow.h"
 #include "SceneWindow.h"
 #include "ViewWindow.h"
@@ -24,14 +22,14 @@ public:
     virtual QObject * openRoadEditor(QWidget *parent) Q_DECL_OVERRIDE;
     virtual void sayHellow() Q_DECL_OVERRIDE;
     virtual QWidget * viewWindow() Q_DECL_OVERRIDE;
-    //virtual QWidget * modelWindow() Q_DECL_OVERRIDE;
+
     virtual QWidget * sceneWindow() Q_DECL_OVERRIDE;
     virtual QWidget * propertyWindow() Q_DECL_OVERRIDE;
     virtual QList<QMenu *> menus() Q_DECL_OVERRIDE;
 protected:
     void createMenus();
 private:
-    //ModelWindow * m_pModelWindow;
+
     PropertyWindow * m_pPropertyWindow;
     ViewWindow * m_pViewWindow;
     SceneWindow * m_pSceneWindow;

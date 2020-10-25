@@ -18,7 +18,6 @@ public:
     virtual QObject * openRoadEditor(QWidget *parent) = 0;
     virtual void sayHellow() =0;
     virtual QWidget * viewWindow() = 0;
-    //virtual QWidget * modelWindow() = 0;
     virtual QWidget * sceneWindow() = 0;
     virtual QWidget * propertyWindow() =0;
     virtual QList<QMenu *> menus() = 0;

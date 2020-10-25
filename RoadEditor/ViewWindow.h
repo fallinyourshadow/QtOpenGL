@@ -2,6 +2,8 @@
 #define VIEWWINDOW_H
 
 #include <QWidget>
+#include "Topscene.h"
+#include "OpenGlWidget.h"
 
 namespace Ui {
 class ViewWindow;
@@ -13,7 +15,7 @@ class ViewWindow : public QWidget
 public:
     explicit ViewWindow(QWidget *parent = nullptr);
     ~ViewWindow();
-
+    OpenGlWidget * openGlWidget();
 
 private:
     Ui::ViewWindow *ui;

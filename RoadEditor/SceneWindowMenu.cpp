@@ -10,6 +10,8 @@ SceneWindowMenu::SceneWindowMenu(QMenu *parent) : QMenu(parent)
     addAction(&m_addObject);
     addAction(&m_delCurScene);
     addAction(&m_delCurObject);
+
+
 }
 
 void SceneWindowMenu::showSceneMenu()
@@ -22,10 +24,30 @@ void SceneWindowMenu::showSceneMenu()
 
 void SceneWindowMenu::showObjectMenu()
 {
-    addAction(&m_addScene);
-    addAction(&m_addObject);
+    removeAction(&m_addScene);
+    removeAction(&m_addObject);
     removeAction(&m_delCurScene);
     addAction(&m_delCurObject);
+}
+
+const QAction *SceneWindowMenu::addScene()
+{
+    return  &m_addScene;
+}
+
+const QAction *SceneWindowMenu::addObject()
+{
+    return &m_addObject;
+}
+
+const QAction *SceneWindowMenu::delCurObject()
+{
+    return &m_delCurObject;
+}
+
+const QAction *SceneWindowMenu::delCurScene()
+{
+    return &m_delCurScene;
 }
 
 void SceneWindowMenu::showTopSceneMenu()

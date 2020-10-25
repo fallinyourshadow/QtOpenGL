@@ -5,23 +5,31 @@ MetaObject::MetaObject(QObject *parent) :
     m_pModel(),
     m_objectType(META_OBJECT)
 {
+
     initProperty();
 }
 
-QWeakPointer<Model *> MetaObject::model()
+MetaObject::~MetaObject()
+{
+    DEBUG_TITLE << "delete";
+
+    //m_pModel.clear();
+    //m_pModelPackage.clear();
+}
+
+Model * MetaObject::model()
 {
     return m_pModel;
 }
 
-void MetaObject::citeModel(QSharedPointer<Model *> &model)
+void MetaObject::citeModel(Model * model)
 {
-    m_pModel.clear();
-    m_pModel = model.toWeakRef();
+    m_pModel = model;
 }
 
 void MetaObject::removeModel()
 {
-    m_pModel.clear();
+    m_pModel = nullptr;
 }
 
 //QStandardItem *MetaObject::item()
@@ -31,8 +39,9 @@ void MetaObject::removeModel()
 
 void MetaObject::initProperty()
 {
+    m_pModelPackage = nullptr;
+    m_pModel = nullptr;
 
-    m_pModel.clear();
 }
 
 void MetaObject::hellow()
@@ -45,7 +54,19 @@ MetaObject::ObjectType MetaObject::objectType()
     return  m_objectType;
 }
 
+ModelPackage * MetaObject::modelPackage()
+{
+     //QReadLocker locker(&m_lock);
+    return m_pModelPackage;
+}
 
+bool MetaObject::citeModelPackage( class ModelPackage *package)
+{
+    //QWriteLocker locker(&m_lock);
+    m_pModelPackage = package;
+
+    return true;
+}
 
 void MetaObject::setObjectType(ObjectType type)
 {

@@ -12,3 +12,10 @@ ViewWindow::~ViewWindow()
 {
     delete ui;
 }
+
+OpenGlWidget * ViewWindow::openGlWidget()
+{
+    return ui->openGLWidget;
+}
+
+

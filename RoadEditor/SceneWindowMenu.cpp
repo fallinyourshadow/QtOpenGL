@@ -10,8 +10,6 @@ SceneWindowMenu::SceneWindowMenu(QMenu *parent) : QMenu(parent)
     addAction(&m_addObject);
     addAction(&m_delCurScene);
     addAction(&m_delCurObject);
-
-
 }
 
 void SceneWindowMenu::showSceneMenu()

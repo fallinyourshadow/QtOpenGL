@@ -28,7 +28,7 @@ public:
     virtual void run(){
         QString path = property("path").value<QString>();
         Q_EMIT loadDone(loadPlugin(path));
-    };
+    }
     void on_loadDone(QObject * plugin){
         if(nullptr != plugin)
         {

@@ -7,7 +7,7 @@ int main(int argc, char *argv[])
     QApplication a(argc, argv);
     //MainWindow w;
     PluginLoader lt;
-    lt.setProperty("path","C:\\Users\\ASUS\\Desktop\\QtOpenGl\\build\\debug\\RoadEditor.dll");
+    lt.setProperty("path","C:\\Users\\Administrator\\Desktop\\QtOpenGL\\build\\debug\\RoadEditor.dll");
     //w.show();
 
     lt.start();
